@@ -36,28 +36,13 @@ public class DashboardService {
         summary.setTotalAgroWells(agroWellRepository.count());
         summary.setTotalPoultryFarms(poultryRepository.count());
         
-        // Calculate total land area
-        Double totalLandArea = farmerRepository.findAll().stream()
-                .filter(f -> f.getLandSizeHectares() != null)
-                .mapToDouble(f -> f.getLandSizeHectares())
-                .sum();
-        summary.setTotalLandArea(totalLandArea);
+        // Calculate total land area using database aggregation
+        summary.setTotalLandArea(farmerRepository.sumTotalLandArea());
         
-        // Calculate total yield from all sources
-        Double homeGardenYield = homeGardenRepository.findAll().stream()
-                .filter(h -> h.getYieldKg() != null)
-                .mapToDouble(h -> h.getYieldKg())
-                .sum();
-        
-        Double csaYield = csaAgricultureRepository.findAll().stream()
-                .filter(c -> c.getYieldKg() != null)
-                .mapToDouble(c -> c.getYieldKg())
-                .sum();
-        
-        Double agroWellYield = agroWellRepository.findAll().stream()
-                .filter(a -> a.getYieldKg() != null)
-                .mapToDouble(a -> a.getYieldKg())
-                .sum();
+        // Calculate total yield from all sources using database aggregation
+        Double homeGardenYield = homeGardenRepository.sumTotalYield();
+        Double csaYield = csaAgricultureRepository.sumTotalYield();
+        Double agroWellYield = agroWellRepository.sumTotalYield();
         
         summary.setTotalYieldKg(homeGardenYield + csaYield + agroWellYield);
         

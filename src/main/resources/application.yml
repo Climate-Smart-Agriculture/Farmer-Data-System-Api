@@ -27,7 +27,7 @@ server:
     context-path: /api
 
 jwt:
-  secret: ${JWT_SECRET:csiap-farmer-data-system-secret-key-change-in-production-at-least-256-bits}
+  secret: ${JWT_SECRET}
   expiration: ${JWT_EXPIRATION:86400000}
 
 logging:
