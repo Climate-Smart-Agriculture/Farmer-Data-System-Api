@@ -1,13 +1,13 @@
 spring:
   application:
     name: farmer-data-system
-  
+
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:farmerdb}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:postgres}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:farmer_data}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
     driver-class-name: org.postgresql.Driver
-  
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,10 +16,11 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-  
+        default_schema: farmer_data
+
   sql:
     init:
-      mode: always
+      mode: never
 
 server:
   port: ${SERVER_PORT:8080}
@@ -27,7 +28,7 @@ server:
     context-path: /api
 
 jwt:
-  secret: ${JWT_SECRET}
+  secret: ${JWT_SECRET:csiap-farmer-data-system-secret-key-change-in-production-at-least-256-bits}
   expiration: ${JWT_EXPIRATION:86400000}
 
 logging:
