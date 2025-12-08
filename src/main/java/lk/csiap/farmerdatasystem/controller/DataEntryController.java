@@ -13,7 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/data-entry")
-@CrossOrigin(origins = "*")
+// Global CORS configuration is in SecurityConfig.java
+// @CrossOrigin(origins = "*")
 public class DataEntryController {
 
     @Autowired
