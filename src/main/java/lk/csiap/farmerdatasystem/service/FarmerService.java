@@ -32,24 +32,24 @@ public class FarmerService {
         if (farmerRepository.existsByNic(farmer.getNic())) {
             throw new RuntimeException("Farmer with NIC already exists");
         }
-        farmer.setRegistrationDate(LocalDateTime.now());
         return farmerRepository.save(farmer);
     }
 
     public FarmerDim updateFarmer(Long id, FarmerDim farmerDetails) {
         FarmerDim farmer = getFarmerById(id);
-        
+
         farmer.setFullName(farmerDetails.getFullName());
         farmer.setContactNumber(farmerDetails.getContactNumber());
         farmer.setEmail(farmerDetails.getEmail());
         farmer.setAddress(farmerDetails.getAddress());
         farmer.setDistrict(farmerDetails.getDistrict());
-        farmer.setProvince(farmerDetails.getProvince());
-        farmer.setGnDivision(farmerDetails.getGnDivision());
-        farmer.setDsDivision(farmerDetails.getDsDivision());
-        farmer.setLandSizeHectares(farmerDetails.getLandSizeHectares());
-        farmer.setFarmingExperienceYears(farmerDetails.getFarmingExperienceYears());
-
+        farmer.setVillageName(farmerDetails.getVillageName());
+        farmer.setDsdDivision(farmerDetails.getDsdDivision());
+        farmer.setAscDivision(farmerDetails.getAscDivision());
+        farmer.setGender(farmerDetails.getGender());
+        farmer.setIsSamurdhiBeneficiary(farmerDetails.getIsSamurdhiBeneficiary());
+        farmer.setIsDisabled(farmerDetails.getIsDisabled());
+        farmer.setIsWomanHeadedHousehold(farmerDetails.getIsWomanHeadedHousehold());
         return farmerRepository.save(farmer);
     }
 

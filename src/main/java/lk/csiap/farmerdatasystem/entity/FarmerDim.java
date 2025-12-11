@@ -39,23 +39,26 @@ public class FarmerDim {
     @Column(name = "district")
     private String district;
 
-    @Column(name = "province")
-    private String province;
+    @Column(name = "village_name")
+    private String villageName;
 
-    @Column(name = "gn_division")
-    private String gnDivision;
+    @Column(name = "dsd_division")
+    private String dsdDivision;
 
-    @Column(name = "ds_division")
-    private String dsDivision;
+    @Column(name = "asc_division")
+    private String ascDivision;
 
-    @Column(name = "land_size_hectares")
-    private Double landSizeHectares;
+    @Column(name = "gender")
+    private String gender;
 
-    @Column(name = "farming_experience_years")
-    private Integer farmingExperienceYears;
+    @Column(name = "is_samurdhi_beneficiary")
+    private Integer isSamurdhiBeneficiary;
 
-    @Column(name = "registration_date")
-    private LocalDateTime registrationDate;
+    @Column(name = "is_disabled")
+    private Integer isDisabled;
+
+    @Column(name = "is_woman_headed_household")
+    private Integer isWomanHeadedHousehold;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -10,8 +10,6 @@ import java.util.Optional;
 @Repository
 public interface FarmerRepository extends JpaRepository<FarmerDim, Long> {
     Optional<FarmerDim> findByNic(String nic);
+
     Boolean existsByNic(String nic);
-    
-    @Query("SELECT COALESCE(SUM(f.landSizeHectares), 0) FROM FarmerDim f WHERE f.landSizeHectares IS NOT NULL")
-    Double sumTotalLandArea();
 }
