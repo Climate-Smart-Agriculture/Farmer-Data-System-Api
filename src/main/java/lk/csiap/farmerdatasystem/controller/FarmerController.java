@@ -3,6 +3,7 @@ package lk.csiap.farmerdatasystem.controller;
 import jakarta.validation.Valid;
 import lk.csiap.farmerdatasystem.dto.ApiResponse;
 import lk.csiap.farmerdatasystem.entity.FarmerDim;
+import lk.csiap.farmerdatasystem.entity.FarmerSearch;
 import lk.csiap.farmerdatasystem.service.FarmerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,10 +21,12 @@ public class FarmerController {
     @Autowired
     private FarmerService farmerService;
 
-    @GetMapping
-    public ResponseEntity<ApiResponse<List<FarmerDim>>> getAllFarmers() {
-        List<FarmerDim> farmers = farmerService.getAllFarmers();
-        return ResponseEntity.ok(ApiResponse.success("Farmers retrieved successfully", farmers));
+    @PostMapping("/search")
+    public ResponseEntity<ApiResponse<FarmerSearch>> getAllFarmers(@RequestBody(required = false) FarmerDim filter,
+            @RequestParam int page, @RequestParam int pageSize) {
+        System.out.println("Filter: " + filter.getGender());
+        FarmerSearch farmerSearch = farmerService.getAllFarmers(filter, page, pageSize);
+        return ResponseEntity.ok(ApiResponse.success("Farmers retrieved successfully", farmerSearch));
     }
 
     @GetMapping("/{id}")
@@ -32,13 +35,20 @@ public class FarmerController {
         return ResponseEntity.ok(ApiResponse.success("Farmer retrieved successfully", farmer));
     }
 
+    @GetMapping("/unique-values/{fieldName}")
+    public ResponseEntity<ApiResponse<List<String>>> getUniqueFieldValues(@PathVariable String fieldName) {
+        List<String> uniqueValues = null;
+        // farmerService.getUniqueFieldValues(fieldName);
+        return ResponseEntity.ok(ApiResponse.success("Unique values retrieved successfully", uniqueValues));
+    }
+
     @GetMapping("/nic/{nic}")
     public ResponseEntity<ApiResponse<FarmerDim>> getFarmerByNic(@PathVariable String nic) {
         FarmerDim farmer = farmerService.getFarmerByNic(nic);
         return ResponseEntity.ok(ApiResponse.success("Farmer retrieved successfully", farmer));
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<ApiResponse<FarmerDim>> createFarmer(@Valid @RequestBody FarmerDim farmer) {
         FarmerDim createdFarmer = farmerService.createFarmer(farmer);
         return ResponseEntity.status(HttpStatus.CREATED)
