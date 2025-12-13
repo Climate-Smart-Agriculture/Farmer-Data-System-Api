@@ -111,6 +111,6 @@ public class AgricultureFact {
     private BigDecimal netIncomeRs;
 
     @Column(name = "irrigation_method")
-    private BigDecimal irrigationmethod;
+    private Integer irrigationmethod;
 
 }
