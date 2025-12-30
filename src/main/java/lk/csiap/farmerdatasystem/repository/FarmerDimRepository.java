@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface FarmerRepository extends JpaRepository<FarmerDim, Long> , 
+public interface FarmerDimRepository extends JpaRepository<FarmerDim, Long> , 
         JpaSpecificationExecutor<FarmerDim>{
     Optional<FarmerDim> findByNic(String nic);
 

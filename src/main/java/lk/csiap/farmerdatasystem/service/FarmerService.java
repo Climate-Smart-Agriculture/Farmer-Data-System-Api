@@ -1,9 +1,9 @@
 package lk.csiap.farmerdatasystem.service;
 
 import lk.csiap.farmerdatasystem.entity.FarmerDim;
-import lk.csiap.farmerdatasystem.entity.FarmerSearch;
-import lk.csiap.farmerdatasystem.repository.FarmerRepository;
-import lk.csiap.farmerdatasystem.entity.FarmerSpecification;
+import lk.csiap.farmerdatasystem.entity.FarmerDimSearch;
+import lk.csiap.farmerdatasystem.repository.FarmerDimRepository;
+import lk.csiap.farmerdatasystem.entity.FarmerDimSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
@@ -15,17 +15,17 @@ import java.util.List;
 public class FarmerService {
 
     @Autowired
-    private FarmerRepository farmerRepository;
+    private FarmerDimRepository farmerRepository;
     // Return farmer list and total count
 
-    public FarmerSearch getAllFarmers(FarmerDim filter, int page, int pageSize) {
+    public FarmerDimSearch getAllFarmers(FarmerDim filter, int page, int pageSize) {
 
-        Specification<FarmerDim> spec = FarmerSpecification.filter(filter);
+        Specification<FarmerDim> spec = FarmerDimSpecification.filter(filter);
 
         Pageable pageable = PageRequest.of(page, pageSize);
         int count = (int) farmerRepository.count(spec);
         List<FarmerDim> farmers = farmerRepository.findAll(spec, pageable).getContent();
-        return new FarmerSearch(count, farmers);
+        return new FarmerDimSearch(count, farmers);
     }
 
     public FarmerDim getFarmerById(Long id) {

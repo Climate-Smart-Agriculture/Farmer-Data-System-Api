@@ -10,23 +10,20 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "poultry_farming_data")
+@Table(name = "agro_well_data")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PoultryFarmingData {
+public class AgroWellData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "poultry_id")
-    private Long poultryId;
+    @Column(name = "agro_well_id")
+    private Long agroWellId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "farmer_id", nullable = false)
     private FarmerDim farmer;
-
-    @Column(name = "year")
-    private Integer year;
 
     @Column(name = "program_name")
     private String programName;
@@ -46,11 +43,17 @@ public class PoultryFarmingData {
     @Column(name = "tank_or_vis_name")
     private String tankOrVisName;
 
+    @Column(name = "command_area_ha")
+    private Double commandAreaHa;
+
     @Column(name = "producer_society")
     private String producerSociety;
 
-    @Column(name = "agricultural_instructor")
-    private String agriculturalInstructor;
+    @Column(name = "farmer_organization_name")
+    private String farmerOrganizationName;
+
+    @Column(name = "ai_range")
+    private String aiRange;
 
     @Column(name = "grama_niladhari_division")
     private String gramaNiladhariDivision;
@@ -85,41 +88,29 @@ public class PoultryFarmingData {
     @Column(name = "is_disabled")
     private Integer isDisabled;
 
-    @Column(name = "chicks_given")
-    private Integer chicksGiven;
+    @Column(name = "cultivations")
+    private String cultivations;
 
-    @Column(name = "is_csa_conducted")
-    private Integer isCsaConducted;
+    @Column(name = "is_replicated_crop")
+    private Integer isReplicatedCrop;
 
-    @Column(name = "is_iec_conducted")
-    private Integer isIecConducted;
+    @Column(name = "extent_ha")
+    private Double extentHa;
 
-    @Column(name = "chick_unit_price_rs")
-    private Double chickUnitPriceRs;
+    @Column(name = "no_of_plant")
+    private Integer noOfPlant;
 
-    @Column(name = "total_project_cost_rs")
-    private Double totalProjectCostRs;
+    @Column(name = "total_cultivation_cost_rs")
+    private Double totalCultivationCostRs;
 
-    @Column(name = "farmer_contribution_rs")
-    private Double farmerContributionRs;
+    @Column(name = "agrowell_depreciation_per_season_cost_rs")
+    private Double agrowellDepreciationPerSeasonCostRs;
 
     @Column(name = "total_cost_rs")
     private Double totalCostRs;
 
-    @Column(name = "dead_chicks")
-    private Integer deadChicks;
-
-    @Column(name = "total_egg_production")
-    private Integer totalEggProduction;
-
-    @Column(name = "flock_size_increment")
-    private Integer flockSizeIncrement;
-
-    @Column(name = "feed_expenditure_rs")
-    private Double feedExpenditureRs;
-
-    @Column(name = "egg_unit_price_rs")
-    private Double eggUnitPriceRs;
+    @Column(name = "yield_kg")
+    private Double yieldKg;
 
     @Column(name = "income_rs")
     private Double incomeRs;
@@ -127,8 +118,8 @@ public class PoultryFarmingData {
     @Column(name = "net_income_rs")
     private Double netIncomeRs;
 
-    @Column(name = "province_code")
-    private String provinceCode;
+    @Column(name = "irrigation_method")
+    private String irrigationMethod;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

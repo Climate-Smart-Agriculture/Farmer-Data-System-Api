@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class DashboardService {
 
     @Autowired
-    private FarmerRepository farmerRepository;
+    private FarmerDimRepository farmerRepository;
 
     @Autowired
     private EquipmentRepository equipmentRepository;
@@ -36,12 +36,11 @@ public class DashboardService {
         summary.setTotalAgroWells(agroWellRepository.count());
         summary.setTotalPoultryFarms(poultryRepository.count());
 
-        // Calculate total yield from all sources using database aggregation
-        Double homeGardenYield = homeGardenRepository.sumTotalYield();
+        // Calculate total yield from CSA and Agro Well data
         Double csaYield = csaAgricultureRepository.sumTotalYield();
         Double agroWellYield = agroWellRepository.sumTotalYield();
 
-        summary.setTotalYieldKg(homeGardenYield + csaYield + agroWellYield);
+        summary.setTotalYieldKg(csaYield + agroWellYield);
 
         return summary;
     }

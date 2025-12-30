@@ -3,7 +3,7 @@ package lk.csiap.farmerdatasystem.controller;
 import jakarta.validation.Valid;
 import lk.csiap.farmerdatasystem.dto.ApiResponse;
 import lk.csiap.farmerdatasystem.entity.FarmerDim;
-import lk.csiap.farmerdatasystem.entity.FarmerSearch;
+import lk.csiap.farmerdatasystem.entity.FarmerDimSearch;
 import lk.csiap.farmerdatasystem.service.FarmerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,10 +22,10 @@ public class FarmerController {
     private FarmerService farmerService;
 
     @PostMapping("/search")
-    public ResponseEntity<ApiResponse<FarmerSearch>> getAllFarmers(@RequestBody(required = false) FarmerDim filter,
+    public ResponseEntity<ApiResponse<FarmerDimSearch>> getAllFarmers(@RequestBody(required = false) FarmerDim filter,
             @RequestParam int page, @RequestParam int pageSize) {
         System.out.println("Filter: " + filter.getGender());
-        FarmerSearch farmerSearch = farmerService.getAllFarmers(filter, page, pageSize);
+        FarmerDimSearch farmerSearch = farmerService.getAllFarmers(filter, page, pageSize);
         return ResponseEntity.ok(ApiResponse.success("Farmers retrieved successfully", farmerSearch));
     }
 

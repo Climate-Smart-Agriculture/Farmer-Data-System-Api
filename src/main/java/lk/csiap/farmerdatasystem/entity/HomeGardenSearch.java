@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FarmerSearch {
+public class HomeGardenSearch {
     int totalCount;
-    List<FarmerDim> farmers;
+    List<HomeGardenData> homeGardenData;
 }
