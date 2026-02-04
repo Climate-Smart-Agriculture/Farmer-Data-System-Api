@@ -14,7 +14,9 @@ public class EquipmentSpecification {
             if (filter.getYear() != null) {
                 predicates.add(cb.equal(root.get("year"), filter.getYear()));
             }
-
+            if (filter.getFarmerId() != null) {
+                predicates.add(cb.equal(root.get("farmerId"), filter.getFarmerId()));
+            }
             // String filters with exact match
             if (filter.getProgramName() != null && !filter.getProgramName().isEmpty()) {
                 predicates.add(cb.equal(root.get("programName"), filter.getProgramName()));

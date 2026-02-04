@@ -25,6 +25,12 @@ public class HomeGardenController {
             @RequestParam int page,
             @RequestParam int pageSize) {
         HomeGardenSearch homeGardenSearch = homeGardenService.getAllHomeGardenData(filter, page, pageSize);
+        //Print first record for debugging
+        if (homeGardenSearch.getHomeGardenData() != null && !homeGardenSearch.getHomeGardenData().isEmpty()) {
+            System.out.println("First record: " + homeGardenSearch.getHomeGardenData().get(0));
+        } else {
+            System.out.println("No records found.");
+        }
         return ResponseEntity.ok(ApiResponse.success("Home Garden data retrieved successfully", homeGardenSearch));
     }
 

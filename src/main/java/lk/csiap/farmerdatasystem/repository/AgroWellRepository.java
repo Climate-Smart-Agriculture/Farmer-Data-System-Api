@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface AgroWellRepository extends JpaRepository<AgroWellData, Long>, JpaSpecificationExecutor<AgroWellData> {
-    List<AgroWellData> findByFarmer_FarmerId(Long farmerId);
+    List<AgroWellData> findByFarmerId(Long farmerId);
 
     @Query("SELECT COALESCE(SUM(a.yieldKg), 0) FROM AgroWellData a WHERE a.yieldKg IS NOT NULL")
     Double sumTotalYield();

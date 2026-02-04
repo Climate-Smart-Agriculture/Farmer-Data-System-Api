@@ -32,7 +32,7 @@ public class HomeGardenService {
     }
 
     public List<HomeGardenData> getHomeGardenDataByFarmerId(Long farmerId) {
-        return homeGardenRepository.findByFarmer_FarmerId(farmerId);
+        return homeGardenRepository.findByFarmerId(farmerId);
     }
 
     public HomeGardenData createHomeGardenData(HomeGardenData data) {

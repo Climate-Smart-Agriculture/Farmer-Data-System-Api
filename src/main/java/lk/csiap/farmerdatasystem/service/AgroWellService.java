@@ -32,7 +32,7 @@ public class AgroWellService {
     }
 
     public List<AgroWellData> getAgroWellDataByFarmerId(Long farmerId) {
-        return agroWellRepository.findByFarmer_FarmerId(farmerId);
+        return agroWellRepository.findByFarmerId(farmerId);
     }
 
     public AgroWellData createAgroWellData(AgroWellData data) {

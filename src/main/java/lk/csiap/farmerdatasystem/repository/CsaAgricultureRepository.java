@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface CsaAgricultureRepository
         extends JpaRepository<CsaAgricultureData, Long>, JpaSpecificationExecutor<CsaAgricultureData> {
-    List<CsaAgricultureData> findByFarmer_FarmerId(Long farmerId);
+    List<CsaAgricultureData> findByFarmerId(Long farmerId);
 
     @Query("SELECT COALESCE(SUM(c.yieldKg), 0) FROM CsaAgricultureData c WHERE c.yieldKg IS NOT NULL")
     Double sumTotalYield();

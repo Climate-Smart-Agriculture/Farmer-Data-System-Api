@@ -32,7 +32,7 @@ public class EquipmentService {
     }
 
     public List<EquipmentData> getEquipmentDataByFarmerId(Long farmerId) {
-        return equipmentRepository.findByFarmer_FarmerId(farmerId);
+        return equipmentRepository.findByFarmerId(farmerId);
     }
 
     public EquipmentData createEquipmentData(EquipmentData data) {

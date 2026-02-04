@@ -21,9 +21,8 @@ public class AgroWellData {
     @Column(name = "agro_well_id")
     private Long agroWellId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "farmer_id", nullable = false)
-    private FarmerDim farmer;
+    @Column(name = "farmer_id", nullable = false)
+    private Long farmerId;
 
     @Column(name = "program_name")
     private String programName;

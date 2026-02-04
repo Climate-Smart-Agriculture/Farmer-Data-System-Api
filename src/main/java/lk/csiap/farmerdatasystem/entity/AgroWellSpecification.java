@@ -14,7 +14,9 @@ public class AgroWellSpecification {
             if (filter.getProgramName() != null && !filter.getProgramName().isEmpty()) {
                 predicates.add(cb.equal(root.get("programName"), filter.getProgramName()));
             }
-
+            if (filter.getFarmerId() != null) {
+                predicates.add(cb.equal(root.get("farmerId"), filter.getFarmerId()));
+            }
             if (filter.getDistrict() != null && !filter.getDistrict().isEmpty()) {
                 predicates.add(cb.equal(root.get("district"), filter.getDistrict()));
             }

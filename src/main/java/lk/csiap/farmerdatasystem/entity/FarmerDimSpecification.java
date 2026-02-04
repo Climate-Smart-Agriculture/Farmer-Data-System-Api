@@ -60,7 +60,9 @@ public class FarmerDimSpecification {
             if (filter.getVillageName() != null && !filter.getVillageName().isEmpty()) {
                 predicates.add(cb.equal(root.get("villageName"), filter.getVillageName()));
             }
-
+            if (filter.getFarmerId() != null) {
+                predicates.add(cb.equal(root.get("farmerId"), filter.getFarmerId()));
+            }
             if (filter.getDsdDivision() != null && !filter.getDsdDivision().isEmpty()) {
                 predicates.add(cb.equal(root.get("dsdDivision"), filter.getDsdDivision()));
             }

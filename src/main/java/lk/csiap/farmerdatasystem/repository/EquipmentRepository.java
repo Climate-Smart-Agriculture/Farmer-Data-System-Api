@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EquipmentRepository extends JpaRepository<EquipmentData, Long>, JpaSpecificationExecutor<EquipmentData> {
-    List<EquipmentData> findByFarmer_FarmerId(Long farmerId);
+public interface EquipmentRepository
+        extends JpaRepository<EquipmentData, Long>, JpaSpecificationExecutor<EquipmentData> {
+    List<EquipmentData> findByFarmerId(Long farmerId);
 }

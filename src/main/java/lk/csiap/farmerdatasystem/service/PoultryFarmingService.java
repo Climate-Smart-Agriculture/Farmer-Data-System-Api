@@ -32,7 +32,7 @@ public class PoultryFarmingService {
     }
 
     public List<PoultryFarmingData> getPoultryFarmingDataByFarmerId(Long farmerId) {
-        return poultryRepository.findByFarmer_FarmerId(farmerId);
+        return poultryRepository.findByFarmerId(farmerId);
     }
 
     public PoultryFarmingData createPoultryFarmingData(PoultryFarmingData data) {

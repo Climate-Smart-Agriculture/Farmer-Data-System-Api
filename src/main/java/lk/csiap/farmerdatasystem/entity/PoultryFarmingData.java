@@ -21,9 +21,8 @@ public class PoultryFarmingData {
     @Column(name = "poultry_id")
     private Long poultryId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "farmer_id", nullable = false)
-    private FarmerDim farmer;
+    @Column(name = "farmer_id", nullable = false)
+    private Long farmerId;
 
     @Column(name = "year")
     private Integer year;

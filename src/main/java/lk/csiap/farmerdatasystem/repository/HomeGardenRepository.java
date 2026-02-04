@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface HomeGardenRepository
         extends JpaRepository<HomeGardenData, Long>, JpaSpecificationExecutor<HomeGardenData> {
-    List<HomeGardenData> findByFarmer_FarmerId(Long farmerId);
+    List<HomeGardenData> findByFarmerId(Long farmerId);
 }

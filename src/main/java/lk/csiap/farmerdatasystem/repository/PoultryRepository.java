@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface PoultryRepository
         extends JpaRepository<PoultryFarmingData, Long>, JpaSpecificationExecutor<PoultryFarmingData> {
-    List<PoultryFarmingData> findByFarmer_FarmerId(Long farmerId);
+    List<PoultryFarmingData> findByFarmerId(Long farmerId);
 }

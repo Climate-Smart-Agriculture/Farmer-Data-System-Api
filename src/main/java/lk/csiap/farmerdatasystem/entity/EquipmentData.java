@@ -21,9 +21,8 @@ public class EquipmentData {
     @Column(name = "equipment_id")
     private Long equipmentId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "farmer_id", nullable = false)
-    private FarmerDim farmer;
+    @Column(name = "farmer_id", nullable = false)
+    private Long farmerId;
 
     @Column(name = "year")
     private Integer year;

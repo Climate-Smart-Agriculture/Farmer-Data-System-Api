@@ -35,7 +35,9 @@ public class CsaAgricultureSpecification {
             if (filter.getCascadeName() != null && !filter.getCascadeName().isEmpty()) {
                 predicates.add(cb.equal(root.get("cascadeName"), filter.getCascadeName()));
             }
-
+            if (filter.getFarmerId() != null) {
+                predicates.add(cb.equal(root.get("farmerId"), filter.getFarmerId()));
+            }
             if (filter.getTankOrVisName() != null && !filter.getTankOrVisName().isEmpty()) {
                 predicates.add(cb.equal(root.get("tankOrVisName"), filter.getTankOrVisName()));
             }

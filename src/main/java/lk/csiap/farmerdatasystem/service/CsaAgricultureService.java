@@ -32,7 +32,7 @@ public class CsaAgricultureService {
     }
 
     public List<CsaAgricultureData> getCsaAgricultureDataByFarmerId(Long farmerId) {
-        return csaAgricultureRepository.findByFarmer_FarmerId(farmerId);
+        return csaAgricultureRepository.findByFarmerId(farmerId);
     }
 
     public CsaAgricultureData createCsaAgricultureData(CsaAgricultureData data) {
