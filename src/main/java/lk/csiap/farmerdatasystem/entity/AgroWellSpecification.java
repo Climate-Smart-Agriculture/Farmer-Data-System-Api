@@ -11,11 +11,17 @@ public class AgroWellSpecification {
             var predicates = new ArrayList<Predicate>();
 
             // String filters with exact match
-            if (filter.getProgramName() != null && !filter.getProgramName().isEmpty()) {
-                predicates.add(cb.equal(root.get("programName"), filter.getProgramName()));
+            if (filter.getRecordId() != null && filter.getRecordId() != 0) {
+                predicates.add(cb.equal(root.get("recordId"), filter.getRecordId()));
             }
             if (filter.getFarmerId() != null) {
                 predicates.add(cb.equal(root.get("farmerId"), filter.getFarmerId()));
+            }
+            if (filter.getYear() != null) {
+                predicates.add(cb.equal(root.get("year"), filter.getYear()));
+            }
+            if (filter.getProgramName() != null && !filter.getProgramName().isEmpty()) {
+                predicates.add(cb.equal(root.get("programName"), filter.getProgramName()));
             }
             if (filter.getDistrict() != null && !filter.getDistrict().isEmpty()) {
                 predicates.add(cb.equal(root.get("district"), filter.getDistrict()));
@@ -65,48 +71,11 @@ public class AgroWellSpecification {
                 predicates.add(cb.equal(root.get("irrigationMethod"), filter.getIrrigationMethod()));
             }
 
-            // Partial match filters for farmer info
-            if (filter.getFarmerName() != null && !filter.getFarmerName().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("farmerName")),
-                        "%" + filter.getFarmerName().toLowerCase() + "%"));
-            }
-
-            if (filter.getAddress() != null && !filter.getAddress().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("address")),
-                        "%" + filter.getAddress().toLowerCase() + "%"));
-            }
-
-            if (filter.getNicNumber() != null && !filter.getNicNumber().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("nicNumber")),
-                        "%" + filter.getNicNumber().toLowerCase() + "%"));
-            }
-
-            if (filter.getTelephoneNumber() != null && !filter.getTelephoneNumber().isEmpty()) {
-                predicates.add(cb.like(root.get("telephoneNumber"),
-                        "%" + filter.getTelephoneNumber() + "%"));
+            if (filter.getProvinceCode() != null && !filter.getProvinceCode().isEmpty()) {
+                predicates.add(cb.equal(root.get("provinceCode"), filter.getProvinceCode()));
             }
 
             // Integer indicator filters
-            if (filter.getIsFemale() != null) {
-                predicates.add(cb.equal(root.get("isFemale"), filter.getIsFemale()));
-            }
-
-            if (filter.getIsMale() != null) {
-                predicates.add(cb.equal(root.get("isMale"), filter.getIsMale()));
-            }
-
-            if (filter.getIsSamurdhiBeneficiary() != null) {
-                predicates.add(cb.equal(root.get("isSamurdhiBeneficiary"), filter.getIsSamurdhiBeneficiary()));
-            }
-
-            if (filter.getIsWomanHeadedHousehold() != null) {
-                predicates.add(cb.equal(root.get("isWomanHeadedHousehold"), filter.getIsWomanHeadedHousehold()));
-            }
-
-            if (filter.getIsDisabled() != null) {
-                predicates.add(cb.equal(root.get("isDisabled"), filter.getIsDisabled()));
-            }
-
             if (filter.getIsReplicatedCrop() != null) {
                 predicates.add(cb.equal(root.get("isReplicatedCrop"), filter.getIsReplicatedCrop()));
             }

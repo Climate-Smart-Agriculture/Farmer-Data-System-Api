@@ -42,6 +42,7 @@ public class CsaAgricultureService {
     public CsaAgricultureData updateCsaAgricultureData(Long id, CsaAgricultureData dataDetails) {
         CsaAgricultureData existingData = getCsaAgricultureDataById(id);
 
+        existingData.setRecordId(dataDetails.getRecordId());
         existingData.setYear(dataDetails.getYear());
         existingData.setProgramName(dataDetails.getProgramName());
         existingData.setDistrict(dataDetails.getDistrict());
@@ -55,15 +56,6 @@ public class CsaAgricultureService {
         existingData.setAiRange(dataDetails.getAiRange());
         existingData.setGramaNiladhariDivision(dataDetails.getGramaNiladhariDivision());
         existingData.setVillageName(dataDetails.getVillageName());
-        existingData.setFarmerName(dataDetails.getFarmerName());
-        existingData.setAddress(dataDetails.getAddress());
-        existingData.setNicNumber(dataDetails.getNicNumber());
-        existingData.setTelephoneNumber(dataDetails.getTelephoneNumber());
-        existingData.setIsFemale(dataDetails.getIsFemale());
-        existingData.setIsMale(dataDetails.getIsMale());
-        existingData.setIsSamurdhiBeneficiary(dataDetails.getIsSamurdhiBeneficiary());
-        existingData.setIsWomanHeadedHousehold(dataDetails.getIsWomanHeadedHousehold());
-        existingData.setIsDisabled(dataDetails.getIsDisabled());
         existingData.setCropType(dataDetails.getCropType());
         existingData.setIsReplicatedCrop(dataDetails.getIsReplicatedCrop());
         existingData.setGrownIrrigatedPaddyIndicator(dataDetails.getGrownIrrigatedPaddyIndicator());
@@ -76,8 +68,6 @@ public class CsaAgricultureService {
         existingData.setCsaMicroIrrigation(dataDetails.getCsaMicroIrrigation());
         existingData.setCsaHomeGardening(dataDetails.getCsaHomeGardening());
         existingData.setCsaAgronomicInterventions(dataDetails.getCsaAgronomicInterventions());
-        existingData.setCsaTrainingReceived(dataDetails.getCsaTrainingReceived());
-        existingData.setIecConducted(dataDetails.getIecConducted());
         existingData.setFtsTraining(dataDetails.getFtsTraining());
         existingData.setFbsTraining(dataDetails.getFbsTraining());
         existingData.setVarietyName(dataDetails.getVarietyName());
@@ -103,7 +93,7 @@ public class CsaAgricultureService {
         existingData.setBaselinePriceRsPerKg(dataDetails.getBaselinePriceRsPerKg());
         existingData.setBaselineValuePerHaRs(dataDetails.getBaselineValuePerHaRs());
         existingData.setProductivityValuePerHaRs(dataDetails.getProductivityValuePerHaRs());
-        existingData.setIncrementalProductivityValueRs(dataDetails.getIncrementalProductivityValueRs());
+        existingData.setIncrementalProductivityPercent(dataDetails.getIncrementalProductivityPercent());
         existingData.setCdiScore(dataDetails.getCdiScore());
         existingData.setCroppingIntensityPercent(dataDetails.getCroppingIntensityPercent());
         existingData.setProvinceCode(dataDetails.getProvinceCode());

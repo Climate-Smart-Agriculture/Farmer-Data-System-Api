@@ -42,6 +42,8 @@ public class AgroWellService {
     public AgroWellData updateAgroWellData(Long id, AgroWellData dataDetails) {
         AgroWellData existingData = getAgroWellDataById(id);
 
+        existingData.setRecordId(dataDetails.getRecordId());
+        existingData.setYear(dataDetails.getYear());
         existingData.setProgramName(dataDetails.getProgramName());
         existingData.setDistrict(dataDetails.getDistrict());
         existingData.setDsdDivision(dataDetails.getDsdDivision());
@@ -54,15 +56,6 @@ public class AgroWellService {
         existingData.setAiRange(dataDetails.getAiRange());
         existingData.setGramaNiladhariDivision(dataDetails.getGramaNiladhariDivision());
         existingData.setVillageName(dataDetails.getVillageName());
-        existingData.setFarmerName(dataDetails.getFarmerName());
-        existingData.setAddress(dataDetails.getAddress());
-        existingData.setNicNumber(dataDetails.getNicNumber());
-        existingData.setTelephoneNumber(dataDetails.getTelephoneNumber());
-        existingData.setIsFemale(dataDetails.getIsFemale());
-        existingData.setIsMale(dataDetails.getIsMale());
-        existingData.setIsSamurdhiBeneficiary(dataDetails.getIsSamurdhiBeneficiary());
-        existingData.setIsWomanHeadedHousehold(dataDetails.getIsWomanHeadedHousehold());
-        existingData.setIsDisabled(dataDetails.getIsDisabled());
         existingData.setCultivations(dataDetails.getCultivations());
         existingData.setIsReplicatedCrop(dataDetails.getIsReplicatedCrop());
         existingData.setExtentHa(dataDetails.getExtentHa());
@@ -74,6 +67,7 @@ public class AgroWellService {
         existingData.setIncomeRs(dataDetails.getIncomeRs());
         existingData.setNetIncomeRs(dataDetails.getNetIncomeRs());
         existingData.setIrrigationMethod(dataDetails.getIrrigationMethod());
+        existingData.setProvinceCode(dataDetails.getProvinceCode());
 
         return agroWellRepository.save(existingData);
     }

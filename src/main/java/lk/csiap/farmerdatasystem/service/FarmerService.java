@@ -34,12 +34,12 @@ public class FarmerService {
     }
 
     public FarmerDim getFarmerByNic(String nic) {
-        return farmerRepository.findByNic(nic)
+        return farmerRepository.findByNicNumber(nic)
                 .orElseThrow(() -> new RuntimeException("Farmer not found with NIC: " + nic));
     }
 
     public FarmerDim createFarmer(FarmerDim farmer) {
-        if (farmerRepository.existsByNic(farmer.getNic())) {
+        if (farmerRepository.existsByNicNumber(farmer.getNicNumber())) {
             throw new RuntimeException("Farmer with NIC already exists");
         }
         return farmerRepository.save(farmer);
@@ -48,18 +48,36 @@ public class FarmerService {
     public FarmerDim updateFarmer(Long id, FarmerDim farmerDetails) {
         FarmerDim farmer = getFarmerById(id);
 
-        farmer.setFullName(farmerDetails.getFullName());
-        farmer.setContactNumber(farmerDetails.getContactNumber());
-        farmer.setEmail(farmerDetails.getEmail());
+        farmer.setFarmerName(farmerDetails.getFarmerName());
+        farmer.setNicNumber(farmerDetails.getNicNumber());
         farmer.setAddress(farmerDetails.getAddress());
         farmer.setDistrict(farmerDetails.getDistrict());
         farmer.setVillageName(farmerDetails.getVillageName());
         farmer.setDsdDivision(farmerDetails.getDsdDivision());
         farmer.setAscDivision(farmerDetails.getAscDivision());
+        farmer.setAiRange(farmerDetails.getAiRange());
+        farmer.setGramaNiladhariDivision(farmerDetails.getGramaNiladhariDivision());
+        farmer.setCascadeName(farmerDetails.getCascadeName());
+        farmer.setTankOrVisName(farmerDetails.getTankOrVisName());
+        farmer.setProducerSociety(farmerDetails.getProducerSociety());
+        farmer.setFarmerOrganizationName(farmerDetails.getFarmerOrganizationName());
+        farmer.setCommandAreaHa(farmerDetails.getCommandAreaHa());
+        farmer.setTelephoneNumber(farmerDetails.getTelephoneNumber());
         farmer.setGender(farmerDetails.getGender());
         farmer.setIsSamurdhiBeneficiary(farmerDetails.getIsSamurdhiBeneficiary());
-        farmer.setIsDisabled(farmerDetails.getIsDisabled());
         farmer.setIsWomanHeadedHousehold(farmerDetails.getIsWomanHeadedHousehold());
+        farmer.setIsDisabled(farmerDetails.getIsDisabled());
+        farmer.setIsCsaConducted(farmerDetails.getIsCsaConducted());
+        farmer.setIsIecConducted(farmerDetails.getIsIecConducted());
+        farmer.setFtsTraining(farmerDetails.getFtsTraining());
+        farmer.setFbsTraining(farmerDetails.getFbsTraining());
+        farmer.setCsaCropDiversification(farmerDetails.getCsaCropDiversification());
+        farmer.setCsaSeedProduction(farmerDetails.getCsaSeedProduction());
+        farmer.setCsaInterseason(farmerDetails.getCsaInterseason());
+        farmer.setCsaMicroIrrigation(farmerDetails.getCsaMicroIrrigation());
+        farmer.setCsaHomeGardening(farmerDetails.getCsaHomeGardening());
+        farmer.setCsaAgronomicInterventions(farmerDetails.getCsaAgronomicInterventions());
+        farmer.setProvinceCode(farmerDetails.getProvinceCode());
         return farmerRepository.save(farmer);
     }
 

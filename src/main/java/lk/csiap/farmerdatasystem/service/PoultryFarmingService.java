@@ -42,6 +42,7 @@ public class PoultryFarmingService {
     public PoultryFarmingData updatePoultryFarmingData(Long id, PoultryFarmingData dataDetails) {
         PoultryFarmingData existingData = getPoultryFarmingDataById(id);
 
+        existingData.setRecordId(dataDetails.getRecordId());
         existingData.setYear(dataDetails.getYear());
         existingData.setProgramName(dataDetails.getProgramName());
         existingData.setDistrict(dataDetails.getDistrict());
@@ -52,19 +53,7 @@ public class PoultryFarmingService {
         existingData.setProducerSociety(dataDetails.getProducerSociety());
         existingData.setAgriculturalInstructor(dataDetails.getAgriculturalInstructor());
         existingData.setGramaNiladhariDivision(dataDetails.getGramaNiladhariDivision());
-        existingData.setVillageName(dataDetails.getVillageName());
-        existingData.setFarmerName(dataDetails.getFarmerName());
-        existingData.setAddress(dataDetails.getAddress());
-        existingData.setNicNumber(dataDetails.getNicNumber());
-        existingData.setTelephoneNumber(dataDetails.getTelephoneNumber());
-        existingData.setIsFemale(dataDetails.getIsFemale());
-        existingData.setIsMale(dataDetails.getIsMale());
-        existingData.setIsSamurdhiBeneficiary(dataDetails.getIsSamurdhiBeneficiary());
-        existingData.setIsWomanHeadedHousehold(dataDetails.getIsWomanHeadedHousehold());
-        existingData.setIsDisabled(dataDetails.getIsDisabled());
         existingData.setChicksGiven(dataDetails.getChicksGiven());
-        existingData.setIsCsaConducted(dataDetails.getIsCsaConducted());
-        existingData.setIsIecConducted(dataDetails.getIsIecConducted());
         existingData.setChickUnitPriceRs(dataDetails.getChickUnitPriceRs());
         existingData.setTotalProjectCostRs(dataDetails.getTotalProjectCostRs());
         existingData.setFarmerContributionRs(dataDetails.getFarmerContributionRs());

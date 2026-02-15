@@ -10,6 +10,11 @@ public class CsaAgricultureSpecification {
         return (root, query, cb) -> {
             var predicates = new ArrayList<Predicate>();
 
+            // Record ID filter
+            if (filter.getRecordId() != null && filter.getRecordId() != 0) {
+                predicates.add(cb.equal(root.get("recordId"), filter.getRecordId()));
+            }
+
             // Year filter
             if (filter.getYear() != null) {
                 predicates.add(cb.equal(root.get("year"), filter.getYear()));
@@ -64,48 +69,6 @@ public class CsaAgricultureSpecification {
 
             if (filter.getProvinceCode() != null && !filter.getProvinceCode().isEmpty()) {
                 predicates.add(cb.equal(root.get("provinceCode"), filter.getProvinceCode()));
-            }
-
-            // Partial match filters for farmer info
-            if (filter.getFarmerName() != null && !filter.getFarmerName().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("farmerName")),
-                        "%" + filter.getFarmerName().toLowerCase() + "%"));
-            }
-
-            if (filter.getAddress() != null && !filter.getAddress().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("address")),
-                        "%" + filter.getAddress().toLowerCase() + "%"));
-            }
-
-            if (filter.getNicNumber() != null && !filter.getNicNumber().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("nicNumber")),
-                        "%" + filter.getNicNumber().toLowerCase() + "%"));
-            }
-
-            if (filter.getTelephoneNumber() != null && !filter.getTelephoneNumber().isEmpty()) {
-                predicates.add(cb.like(root.get("telephoneNumber"),
-                        "%" + filter.getTelephoneNumber() + "%"));
-            }
-
-            // Integer indicator filters
-            if (filter.getIsFemale() != null) {
-                predicates.add(cb.equal(root.get("isFemale"), filter.getIsFemale()));
-            }
-
-            if (filter.getIsMale() != null) {
-                predicates.add(cb.equal(root.get("isMale"), filter.getIsMale()));
-            }
-
-            if (filter.getIsSamurdhiBeneficiary() != null) {
-                predicates.add(cb.equal(root.get("isSamurdhiBeneficiary"), filter.getIsSamurdhiBeneficiary()));
-            }
-
-            if (filter.getIsWomanHeadedHousehold() != null) {
-                predicates.add(cb.equal(root.get("isWomanHeadedHousehold"), filter.getIsWomanHeadedHousehold()));
-            }
-
-            if (filter.getIsDisabled() != null) {
-                predicates.add(cb.equal(root.get("isDisabled"), filter.getIsDisabled()));
             }
 
             // Crop type filters
@@ -167,15 +130,7 @@ public class CsaAgricultureSpecification {
                 predicates.add(cb.equal(root.get("csaAgronomicInterventions"), filter.getCsaAgronomicInterventions()));
             }
 
-            if (filter.getCsaTrainingReceived() != null) {
-                predicates.add(cb.equal(root.get("csaTrainingReceived"), filter.getCsaTrainingReceived()));
-            }
-
             // Training filters
-            if (filter.getIecConducted() != null) {
-                predicates.add(cb.equal(root.get("iecConducted"), filter.getIecConducted()));
-            }
-
             if (filter.getFtsTraining() != null) {
                 predicates.add(cb.equal(root.get("ftsTraining"), filter.getFtsTraining()));
             }

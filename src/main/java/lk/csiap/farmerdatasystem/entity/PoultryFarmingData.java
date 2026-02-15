@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,14 +19,17 @@ public class PoultryFarmingData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "poultry_id")
-    private Long poultryId;
+    @Column(name = "poultry_record_pk")
+    private Integer poultryRecordPk;
+
+    @Column(name = "record_id")
+    private Integer recordId;
 
     @Column(name = "farmer_id", nullable = false)
-    private Long farmerId;
+    private Integer farmerId;
 
     @Column(name = "year")
-    private Integer year;
+    private String year;
 
     @Column(name = "program_name")
     private String programName;
@@ -54,56 +58,20 @@ public class PoultryFarmingData {
     @Column(name = "grama_niladhari_division")
     private String gramaNiladhariDivision;
 
-    @Column(name = "village_name")
-    private String villageName;
-
-    @Column(name = "farmer_name")
-    private String farmerName;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "nic_number")
-    private String nicNumber;
-
-    @Column(name = "telephone_number")
-    private String telephoneNumber;
-
-    @Column(name = "is_female")
-    private Integer isFemale;
-
-    @Column(name = "is_male")
-    private Integer isMale;
-
-    @Column(name = "is_samurdhi_beneficiary")
-    private Integer isSamurdhiBeneficiary;
-
-    @Column(name = "is_woman_headed_household")
-    private Integer isWomanHeadedHousehold;
-
-    @Column(name = "is_disabled")
-    private Integer isDisabled;
-
     @Column(name = "chicks_given")
     private Integer chicksGiven;
 
-    @Column(name = "is_csa_conducted")
-    private Integer isCsaConducted;
-
-    @Column(name = "is_iec_conducted")
-    private Integer isIecConducted;
-
     @Column(name = "chick_unit_price_rs")
-    private Double chickUnitPriceRs;
+    private BigDecimal chickUnitPriceRs;
 
     @Column(name = "total_project_cost_rs")
-    private Double totalProjectCostRs;
+    private BigDecimal totalProjectCostRs;
 
     @Column(name = "farmer_contribution_rs")
-    private Double farmerContributionRs;
+    private BigDecimal farmerContributionRs;
 
     @Column(name = "total_cost_rs")
-    private Double totalCostRs;
+    private BigDecimal totalCostRs;
 
     @Column(name = "dead_chicks")
     private Integer deadChicks;
@@ -115,16 +83,16 @@ public class PoultryFarmingData {
     private Integer flockSizeIncrement;
 
     @Column(name = "feed_expenditure_rs")
-    private Double feedExpenditureRs;
+    private BigDecimal feedExpenditureRs;
 
     @Column(name = "egg_unit_price_rs")
-    private Double eggUnitPriceRs;
+    private BigDecimal eggUnitPriceRs;
 
     @Column(name = "income_rs")
-    private Double incomeRs;
+    private BigDecimal incomeRs;
 
     @Column(name = "net_income_rs")
-    private Double netIncomeRs;
+    private BigDecimal netIncomeRs;
 
     @Column(name = "province_code")
     private String provinceCode;

@@ -42,6 +42,7 @@ public class HomeGardenService {
     public HomeGardenData updateHomeGardenData(Long id, HomeGardenData dataDetails) {
         HomeGardenData existingData = getHomeGardenDataById(id);
 
+        existingData.setRecordId(dataDetails.getRecordId());
         existingData.setYear(dataDetails.getYear());
         existingData.setProgramName(dataDetails.getProgramName());
         existingData.setDistrict(dataDetails.getDistrict());
@@ -53,17 +54,6 @@ public class HomeGardenService {
         existingData.setAiRange(dataDetails.getAiRange());
         existingData.setGramaNiladhariDivision(dataDetails.getGramaNiladhariDivision());
         existingData.setVillageName(dataDetails.getVillageName());
-        existingData.setFarmerName(dataDetails.getFarmerName());
-        existingData.setAddress(dataDetails.getAddress());
-        existingData.setNicNumber(dataDetails.getNicNumber());
-        existingData.setTelephoneNumber(dataDetails.getTelephoneNumber());
-        existingData.setIsFemale(dataDetails.getIsFemale());
-        existingData.setIsMale(dataDetails.getIsMale());
-        existingData.setIsSamurdhiBeneficiary(dataDetails.getIsSamurdhiBeneficiary());
-        existingData.setIsWomanHeadedHousehold(dataDetails.getIsWomanHeadedHousehold());
-        existingData.setIsDisabled(dataDetails.getIsDisabled());
-        existingData.setIsCsaConducted(dataDetails.getIsCsaConducted());
-        existingData.setIsIecConducted(dataDetails.getIsIecConducted());
         existingData.setExtentHa(dataDetails.getExtentHa());
         existingData.setSeedPackCount(dataDetails.getSeedPackCount());
         existingData.setBananaPlantsCount(dataDetails.getBananaPlantsCount());
@@ -105,6 +95,7 @@ public class HomeGardenService {
         existingData.setNewCultivation13(dataDetails.getNewCultivation13());
         existingData.setNewCultivation14(dataDetails.getNewCultivation14());
         existingData.setNewCultivation15(dataDetails.getNewCultivation15());
+        existingData.setProvinceCode(dataDetails.getProvinceCode());
 
         return homeGardenRepository.save(existingData);
     }
