@@ -54,64 +54,13 @@ public class PoultryFarmingSpecification {
                 predicates.add(cb.equal(root.get("gramaNiladhariDivision"), filter.getGramaNiladhariDivision()));
             }
 
-            if (filter.getVillageName() != null && !filter.getVillageName().isEmpty()) {
-                predicates.add(cb.equal(root.get("villageName"), filter.getVillageName()));
-            }
 
             if (filter.getProvinceCode() != null && !filter.getProvinceCode().isEmpty()) {
                 predicates.add(cb.equal(root.get("provinceCode"), filter.getProvinceCode()));
             }
 
-            // Partial match filters for farmer info
-            if (filter.getFarmerName() != null && !filter.getFarmerName().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("farmerName")),
-                        "%" + filter.getFarmerName().toLowerCase() + "%"));
-            }
-
-            if (filter.getAddress() != null && !filter.getAddress().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("address")),
-                        "%" + filter.getAddress().toLowerCase() + "%"));
-            }
-
-            if (filter.getNicNumber() != null && !filter.getNicNumber().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("nicNumber")),
-                        "%" + filter.getNicNumber().toLowerCase() + "%"));
-            }
-
-            if (filter.getTelephoneNumber() != null && !filter.getTelephoneNumber().isEmpty()) {
-                predicates.add(cb.like(root.get("telephoneNumber"),
-                        "%" + filter.getTelephoneNumber() + "%"));
-            }
-
-            // Integer indicator filters
-            if (filter.getIsFemale() != null) {
-                predicates.add(cb.equal(root.get("isFemale"), filter.getIsFemale()));
-            }
-
-            if (filter.getIsMale() != null) {
-                predicates.add(cb.equal(root.get("isMale"), filter.getIsMale()));
-            }
-
-            if (filter.getIsSamurdhiBeneficiary() != null) {
-                predicates.add(cb.equal(root.get("isSamurdhiBeneficiary"), filter.getIsSamurdhiBeneficiary()));
-            }
-
-            if (filter.getIsWomanHeadedHousehold() != null) {
-                predicates.add(cb.equal(root.get("isWomanHeadedHousehold"), filter.getIsWomanHeadedHousehold()));
-            }
-
-            if (filter.getIsDisabled() != null) {
-                predicates.add(cb.equal(root.get("isDisabled"), filter.getIsDisabled()));
-            }
-
-            if (filter.getIsCsaConducted() != null) {
-                predicates.add(cb.equal(root.get("isCsaConducted"), filter.getIsCsaConducted()));
-            }
-
-            if (filter.getIsIecConducted() != null) {
-                predicates.add(cb.equal(root.get("isIecConducted"), filter.getIsIecConducted()));
-            }
-
+            
+           
             return cb.and(predicates.toArray(new Predicate[0]));
         };
     }

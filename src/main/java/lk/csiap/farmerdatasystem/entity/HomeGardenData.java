@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,14 +19,17 @@ public class HomeGardenData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "home_garden_id")
-    private Long homeGardenId;
+    @Column(name = "ehg_record_pk")
+    private Integer ehgRecordPk;
+
+    @Column(name = "record_id")
+    private Integer recordId;
 
     @Column(name = "farmer_id", nullable = false)
-    private Long farmerId;
+    private Integer farmerId;
 
     @Column(name = "year")
-    private Integer year;
+    private String year;
 
     @Column(name = "program_name")
     private String programName;
@@ -57,116 +61,83 @@ public class HomeGardenData {
     @Column(name = "village_name")
     private String villageName;
 
-    @Column(name = "farmer_name")
-    private String farmerName;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "nic_number")
-    private String nicNumber;
-
-    @Column(name = "telephone_number")
-    private String telephoneNumber;
-
-    @Column(name = "is_female")
-    private Integer isFemale;
-
-    @Column(name = "is_male")
-    private Integer isMale;
-
-    @Column(name = "is_samurdhi_beneficiary")
-    private Integer isSamurdhiBeneficiary;
-
-    @Column(name = "is_woman_headed_household")
-    private Integer isWomanHeadedHousehold;
-
-    @Column(name = "is_disabled")
-    private Integer isDisabled;
-
-    @Column(name = "is_csa_conducted")
-    private Integer isCsaConducted;
-
-    @Column(name = "is_iec_conducted")
-    private Integer isIecConducted;
-
     @Column(name = "extent_ha")
-    private Double extentHa;
+    private BigDecimal extentHa;
 
     @Column(name = "seed_pack_count")
-    private Integer seedPackCount;
+    private BigDecimal seedPackCount;
 
     @Column(name = "banana_plants_count")
-    private Integer bananaPlantsCount;
+    private BigDecimal bananaPlantsCount;
 
     @Column(name = "papaya_plants_count")
-    private Integer papayaPlantsCount;
+    private BigDecimal papayaPlantsCount;
 
     @Column(name = "passionfruit_plants_count")
-    private Integer passionfruitPlantsCount;
+    private BigDecimal passionfruitPlantsCount;
 
     @Column(name = "lemon_plants_count")
-    private Integer lemonPlantsCount;
+    private BigDecimal lemonPlantsCount;
 
     @Column(name = "compost_bags_25kg_count")
-    private Integer compostBags25kgCount;
+    private BigDecimal compostBags25kgCount;
 
     @Column(name = "grow_bags_count")
-    private Integer growBagsCount;
+    private BigDecimal growBagsCount;
 
     @Column(name = "total_project_cost_rs")
-    private Double totalProjectCostRs;
+    private BigDecimal totalProjectCostRs;
 
     @Column(name = "vegetable_production_kg")
-    private Double vegetableProductionKg;
+    private BigDecimal vegetableProductionKg;
 
     @Column(name = "home_consumption_kg")
-    private Double homeConsumptionKg;
+    private BigDecimal homeConsumptionKg;
 
     @Column(name = "share_with_neighbors_kg")
-    private Double shareWithNeighborsKg;
+    private BigDecimal shareWithNeighborsKg;
 
     @Column(name = "sold_quantity_kg")
-    private Double soldQuantityKg;
+    private BigDecimal soldQuantityKg;
 
     @Column(name = "sold_price_rs")
-    private Double soldPriceRs;
+    private BigDecimal soldPriceRs;
 
     @Column(name = "income_rs")
-    private Double incomeRs;
+    private BigDecimal incomeRs;
 
     @Column(name = "mango_count")
-    private Integer mangoCount;
+    private BigDecimal mangoCount;
 
     @Column(name = "orange_count")
-    private Integer orangeCount;
+    private BigDecimal orangeCount;
 
     @Column(name = "hand_spade_count")
-    private Integer handSpadeCount;
+    private BigDecimal handSpadeCount;
 
     @Column(name = "hand_fork_count")
-    private Integer handForkCount;
+    private BigDecimal handForkCount;
 
     @Column(name = "secateurs_count")
-    private Integer secateursCount;
+    private BigDecimal secateursCount;
 
     @Column(name = "pvc_tank_500ml_count")
-    private Integer pvcTank500mlCount;
+    private BigDecimal pvcTank500mlCount;
 
     @Column(name = "watering_can_count")
-    private Integer wateringCanCount;
+    private BigDecimal wateringCanCount;
 
     @Column(name = "mulching_mat_count")
-    private Integer mulchingMatCount;
+    private BigDecimal mulchingMatCount;
 
     @Column(name = "nursery_trays_count")
-    private Integer nurseryTraysCount;
+    private BigDecimal nurseryTraysCount;
 
     @Column(name = "black_polythene_count")
-    private Integer blackPolytheneCount;
+    private BigDecimal blackPolytheneCount;
 
     @Column(name = "gross_income_rs")
-    private Double grossIncomeRs;
+    private BigDecimal grossIncomeRs;
 
     @Column(name = "new_cultivation_1")
     private String newCultivation1;
@@ -212,6 +183,9 @@ public class HomeGardenData {
 
     @Column(name = "new_cultivation_15")
     private String newCultivation15;
+
+    @Column(name = "province_code")
+    private String provinceCode;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

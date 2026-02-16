@@ -42,6 +42,7 @@ public class EquipmentService {
     public EquipmentData updateEquipmentData(Long id, EquipmentData dataDetails) {
         EquipmentData existingData = getEquipmentDataById(id);
 
+        existingData.setRecordId(dataDetails.getRecordId());
         existingData.setYear(dataDetails.getYear());
         existingData.setProgramName(dataDetails.getProgramName());
         existingData.setDistrict(dataDetails.getDistrict());
@@ -52,19 +53,17 @@ public class EquipmentService {
         existingData.setAiRange(dataDetails.getAiRange());
         existingData.setGramaNiladhariDivision(dataDetails.getGramaNiladhariDivision());
         existingData.setVillageName(dataDetails.getVillageName());
-        existingData.setFarmerName(dataDetails.getFarmerName());
-        existingData.setAddress(dataDetails.getAddress());
-        existingData.setNicNumber(dataDetails.getNicNumber());
-        existingData.setTelephoneNumber(dataDetails.getTelephoneNumber());
-        existingData.setIsFemale(dataDetails.getIsFemale());
-        existingData.setIsMale(dataDetails.getIsMale());
         existingData.setEquipmentName(dataDetails.getEquipmentName());
+        existingData.setEquipmentNameStandard(dataDetails.getEquipmentNameStandard());
         existingData.setIsReplicated(dataDetails.getIsReplicated());
         existingData.setNoOfEquipment(dataDetails.getNoOfEquipment());
+        existingData.setDescriptiveExtentHa(dataDetails.getDescriptiveExtentHa());
         existingData.setExtentHa(dataDetails.getExtentHa());
         existingData.setStepApprovalNumber(dataDetails.getStepApprovalNumber());
+        existingData.setDescriptiveUnitPriceRs(dataDetails.getDescriptiveUnitPriceRs());
         existingData.setUnitPriceRs(dataDetails.getUnitPriceRs());
         existingData.setTotalProjectCostRs(dataDetails.getTotalProjectCostRs());
+        existingData.setDescriptiveFarmerCostRs(dataDetails.getDescriptiveFarmerCostRs());
         existingData.setFarmerCostRs(dataDetails.getFarmerCostRs());
         existingData.setProvinceCode(dataDetails.getProvinceCode());
 

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,14 +19,17 @@ public class EquipmentData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "equipment_id")
-    private Long equipmentId;
+    @Column(name = "equipment_record_pk")
+    private Integer equipmentRecordPk;
+
+    @Column(name = "record_id")
+    private Integer recordId;
 
     @Column(name = "farmer_id", nullable = false)
-    private Long farmerId;
+    private Integer farmerId;
 
     @Column(name = "year")
-    private Integer year;
+    private String year;
 
     @Column(name = "program_name")
     private String programName;
@@ -54,47 +58,41 @@ public class EquipmentData {
     @Column(name = "village_name")
     private String villageName;
 
-    @Column(name = "farmer_name")
-    private String farmerName;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "nic_number")
-    private String nicNumber;
-
-    @Column(name = "telephone_number")
-    private String telephoneNumber;
-
-    @Column(name = "is_female")
-    private Integer isFemale;
-
-    @Column(name = "is_male")
-    private Integer isMale;
-
     @Column(name = "equipment_name")
     private String equipmentName;
 
-    @Column(name = "is_replicated")
-    private Integer isReplicated;
+    @Column(name = "equipment_name_standard")
+    private String equipmentNameStandard;
+
+    @Column(name = "is_replicated",columnDefinition = "varchar")
+    private String isReplicated;
 
     @Column(name = "no_of_equipment")
     private Integer noOfEquipment;
 
+    @Column(name = "descriptive_extent_ha")
+    private String descriptiveExtentHa;
+
     @Column(name = "extent_ha")
-    private Double extentHa;
+    private BigDecimal extentHa;
 
     @Column(name = "step_approval_number")
     private String stepApprovalNumber;
 
+    @Column(name = "descriptive_unit_price_rs")
+    private String descriptiveUnitPriceRs;
+
     @Column(name = "unit_price_rs")
-    private Double unitPriceRs;
+    private BigDecimal unitPriceRs;
 
     @Column(name = "total_project_cost_rs")
-    private Double totalProjectCostRs;
+    private BigDecimal totalProjectCostRs;
+
+    @Column(name = "descriptive_farmer_cost_rs")
+    private String descriptiveFarmerCostRs;
 
     @Column(name = "farmer_cost_rs")
-    private Double farmerCostRs;
+    private BigDecimal farmerCostRs;
 
     @Column(name = "province_code")
     private String provinceCode;

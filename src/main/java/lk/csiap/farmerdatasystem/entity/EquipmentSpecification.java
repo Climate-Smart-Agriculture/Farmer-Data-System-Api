@@ -10,13 +10,20 @@ public class EquipmentSpecification {
         return (root, query, cb) -> {
             var predicates = new ArrayList<Predicate>();
 
+            // Record ID filter
+            if (filter.getRecordId() != null && !filter.getRecordId().toString().isEmpty()) {
+                predicates.add(cb.equal(root.get("recordId"), filter.getRecordId()));
+            }
+
             // Year filter
             if (filter.getYear() != null) {
                 predicates.add(cb.equal(root.get("year"), filter.getYear()));
             }
+
             if (filter.getFarmerId() != null) {
                 predicates.add(cb.equal(root.get("farmerId"), filter.getFarmerId()));
             }
+
             // String filters with exact match
             if (filter.getProgramName() != null && !filter.getProgramName().isEmpty()) {
                 predicates.add(cb.equal(root.get("programName"), filter.getProgramName()));
@@ -58,41 +65,35 @@ public class EquipmentSpecification {
                 predicates.add(cb.equal(root.get("provinceCode"), filter.getProvinceCode()));
             }
 
-            // Partial match filters for farmer info
-            if (filter.getFarmerName() != null && !filter.getFarmerName().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("farmerName")),
-                        "%" + filter.getFarmerName().toLowerCase() + "%"));
-            }
-
-            if (filter.getAddress() != null && !filter.getAddress().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("address")),
-                        "%" + filter.getAddress().toLowerCase() + "%"));
-            }
-
-            if (filter.getNicNumber() != null && !filter.getNicNumber().isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("nicNumber")),
-                        "%" + filter.getNicNumber().toLowerCase() + "%"));
-            }
-
-            if (filter.getTelephoneNumber() != null && !filter.getTelephoneNumber().isEmpty()) {
-                predicates.add(cb.like(root.get("telephoneNumber"),
-                        "%" + filter.getTelephoneNumber() + "%"));
-            }
-
             // Equipment name filter
             if (filter.getEquipmentName() != null && !filter.getEquipmentName().isEmpty()) {
                 predicates.add(cb.equal(root.get("equipmentName"), filter.getEquipmentName()));
             }
 
+            // Equipment name standard filter
+            if (filter.getEquipmentNameStandard() != null && !filter.getEquipmentNameStandard().isEmpty()) {
+                predicates.add(cb.equal(root.get("equipmentNameStandard"), filter.getEquipmentNameStandard()));
+            }
+
+            // Descriptive extent filter
+            if (filter.getDescriptiveExtentHa() != null && !filter.getDescriptiveExtentHa().isEmpty()) {
+                predicates.add(cb.like(cb.lower(root.get("descriptiveExtentHa")),
+                        "%" + filter.getDescriptiveExtentHa().toLowerCase() + "%"));
+            }
+
+            // Descriptive unit price filter
+            if (filter.getDescriptiveUnitPriceRs() != null && !filter.getDescriptiveUnitPriceRs().isEmpty()) {
+                predicates.add(cb.like(cb.lower(root.get("descriptiveUnitPriceRs")),
+                        "%" + filter.getDescriptiveUnitPriceRs().toLowerCase() + "%"));
+            }
+
+            // Descriptive farmer cost filter
+            if (filter.getDescriptiveFarmerCostRs() != null && !filter.getDescriptiveFarmerCostRs().isEmpty()) {
+                predicates.add(cb.like(cb.lower(root.get("descriptiveFarmerCostRs")),
+                        "%" + filter.getDescriptiveFarmerCostRs().toLowerCase() + "%"));
+            }
+
             // Integer indicator filters
-            if (filter.getIsFemale() != null) {
-                predicates.add(cb.equal(root.get("isFemale"), filter.getIsFemale()));
-            }
-
-            if (filter.getIsMale() != null) {
-                predicates.add(cb.equal(root.get("isMale"), filter.getIsMale()));
-            }
-
             if (filter.getIsReplicated() != null) {
                 predicates.add(cb.equal(root.get("isReplicated"), filter.getIsReplicated()));
             }
